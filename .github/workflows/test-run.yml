@@ -2,8 +2,7 @@ name: TEST-CRON
 
 on:
   schedule:
-    - cron: '* 13 * * *'
-  workflow_dispatch:
+    - cron: '* * * * *'
 
 jobs:
   run-date:
