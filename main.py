@@ -18,6 +18,9 @@ def get_total():
 def publish_tweet(consumer_key, consumer_secret, key, secret, total):
     logging.info("Start to publish tweet!")
     
+    inicial = 9500000.0 * 3.8595
+    rendimento_total = float(total.replace(",","")) - inicial
+
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(key, secret)
 
@@ -32,14 +35,15 @@ def publish_tweet(consumer_key, consumer_secret, key, secret, total):
 
     if dif > 0:
         logging.info("Setting profit tweet.")
-        tweet = "Total R${}!\nLucrou R${:,.2f}".format(total, dif)
+        tweet = "Total R${}!\nEm 02/01/2019, o valor era R${:,.2f}.\nRendeu hoje R${:,.2f}.\nRendimento total R${:,.2f}".format(total, inicial, dif, rendimento_total)
         media = api.media_upload("feliz.jpg")
     else:
         logging.info("Setting loss tweet.")
-        tweet = "Total R${}!\nPerdeu R${:,.2f}".format(total, dif)
+        tweet = "Total R${}!\nEm 02/01/2019, o valor era R${:,.2f}.\nPerdeu hoje R${:,.2f}.\nRendimento total R${:,.2f}".format(total, inicial, dif, rendimento_total)
         media = api.media_upload("triste.jpg")
     
-    api.update_status(status=tweet, media_ids=[media.media_id])
+    #api.update_status(status=tweet, media_ids=[media.media_id])
+    print(tweet)
 
 def main():
 

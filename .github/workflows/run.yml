@@ -1,8 +1,6 @@
 name: CI
 
 on:
-  push:
-    branches: [ master ]
   schedule:
     - cron: "05 18 * * 1-5"
   workflow_dispatch:
@@ -13,6 +11,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: "Brazil/East"
 
       - name: Build container
         run: |
