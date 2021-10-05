@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  schedule:
+    - cron: "05 18 * * 1-5"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build container
+        run: |
+          docker build -t finovsk/guedes-offshore-bot .
+          
+      - name: Run the container
+        env:
+          KEY: ${{ secrets.KEY}}
+          SECRET: ${{ secrets.SECRET }}
+          CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+          CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+        run: |
+          docker run -e KEY=$KEY -e SECRET=$SECRET -e CONSUMER_KEY=$CONSUMER_KEY -e CONSUMER_SECRET=$CONSUMER_SECRET finovsk/guedes-offshore-bot
