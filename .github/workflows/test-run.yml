@@ -1,4 +1,4 @@
-name: TEST-CRON
+name: TEST
 
 on:
   schedule:
