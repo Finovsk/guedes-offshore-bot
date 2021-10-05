@@ -1,8 +1,8 @@
-name: TEST
+name: Do things every 2 minutes
 
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: "*/2 * * * *"
 
 jobs:
   run-date:
