@@ -1,4 +1,4 @@
-name: "Do things every 2 minutes"
+name: Print date
 
 on:
   schedule:
