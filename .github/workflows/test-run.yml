@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  run-date:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,4 +19,4 @@ jobs:
           timezoneLinux: "Brazil/East"
 
       - name: Run a one-line script
-        run: echo date
+        run: date
