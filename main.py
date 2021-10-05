@@ -42,8 +42,7 @@ def publish_tweet(consumer_key, consumer_secret, key, secret, total):
         tweet = "Total R${}!\nEm 02/01/2019, o valor era R${:,.2f}.\nPerdeu hoje R${:,.2f}.\nRendimento total R${:,.2f}".format(total, inicial, dif, rendimento_total)
         media = api.media_upload("triste.jpg")
     
-    #api.update_status(status=tweet, media_ids=[media.media_id])
-    print(tweet)
+    api.update_status(status=tweet, media_ids=[media.media_id])
 
 def main():
 
