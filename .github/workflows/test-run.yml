@@ -1,10 +1,8 @@
 name: TEST-CRON
 
 on:
-  push:
-    branches: [ master ]
   schedule:
-    - cron: "*/1 13 * * *"
+    - cron: '* 13 * * *'
   workflow_dispatch:
 
 jobs:
