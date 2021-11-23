@@ -22,6 +22,6 @@ jobs:
           SECRET: ${{ secrets.SECRET }}
           CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
-          CREDENTIALS: ${{ secrets.CREDENTIALS }}
+          CREDENTIALS: $(echo ${{ secrets.CREDENTIALS }} | base64 --d)
         run: |
           docker run -e KEY=$KEY -e SECRET=$SECRET -e CONSUMER_KEY=$CONSUMER_KEY -e CONSUMER_SECRET=$CONSUMER_SECRET -e CREDENTIALS=$CREDENTIALS finovsk/guedes-offshore-bot
