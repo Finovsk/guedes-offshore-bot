@@ -5,6 +5,7 @@ import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import date
+import base64
 
 # global
 # github secrets and json <3
