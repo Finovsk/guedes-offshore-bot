@@ -11,7 +11,7 @@ import base64
 # github secrets and json <3
 CREDENTIALS = base64.b64decode(os.environ['CREDENTIALS'])
 CREDENTIALS = CREDENTIALS.decode('ascii')
-CREDENTIALS = dict(CREDENTIALS)
+CREDENTIALS = json.loads(CREDENTIALS)
 
 CONSUMER_KEY = os.environ['CONSUMER_KEY']
 CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
