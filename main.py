@@ -6,13 +6,16 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import date
 
-# global variables
+# global
+# github secrets and json <3
+CREDENTIALS = base64.b64decode(os.environ['CREDENTIALS'])
+CREDENTIALS = CREDENTIALS.decode('ascii')
+CREDENTIALS = dict(CREDENTIALS)
 
 CONSUMER_KEY = os.environ['CONSUMER_KEY']
 CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
 KEY = os.environ['KEY']
 SECRET = os.environ['SECRET']
-CREDENTIALS = dict(os.environ['CREDENTIALS'])
 SCOPE = ["https://spreadsheets.google.com/feeds","https://www.googleapis.com/auth/spreadsheets","https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
 STARTING_CAPITAL = 9500000
 STARTING_CAPITAL_IN_BRL = STARTING_CAPITAL * 3.8595
