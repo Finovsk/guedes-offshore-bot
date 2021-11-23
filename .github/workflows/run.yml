@@ -2,7 +2,7 @@ name: RUN-BOT
 
 on:
   schedule:
-    - cron: "05 21 * * 1-5"
+    - cron: "30 21 * * 1-5"
   workflow_dispatch:
 
 jobs:
@@ -22,5 +22,6 @@ jobs:
           SECRET: ${{ secrets.SECRET }}
           CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+          CREDENTIALS: ${{ secrets.CREDENTIALS }}
         run: |
-          docker run -e KEY=$KEY -e SECRET=$SECRET -e CONSUMER_KEY=$CONSUMER_KEY -e CONSUMER_SECRET=$CONSUMER_SECRET finovsk/guedes-offshore-bot
+          docker run -e KEY=$KEY -e SECRET=$SECRET -e CONSUMER_KEY=$CONSUMER_KEY -e CONSUMER_SECRET=$CONSUMER_SECRET -e CREDENTIALS=$CREDENTIALS finovsk/guedes-offshore-bot

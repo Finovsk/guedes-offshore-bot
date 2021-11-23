@@ -1,2 +1,5 @@
 tweepy
 wget
+gspread
+oauth2client
+datetime
