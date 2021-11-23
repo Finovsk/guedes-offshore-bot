@@ -1,6 +1,6 @@
 ## Sobre
 
-Quanto o offshore do Guedes rendeu hoje?
+Quanto a offshore do Guedes rendeu hoje?
 Bem, agora tem um bot pra te atualizar.
 
 ## Instalação
