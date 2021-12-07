@@ -6,6 +6,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import date
 import base64
+from babel.numbers import format_decimal
 
 # global
 # github secrets and json <3
@@ -65,12 +66,19 @@ def publish_tweet(consumer_key, consumer_secret, key, secret, credentials, scope
     sheet.insert_row(new_row, 2)
 
     difference_from_last_total = total - previous_total_value
+
+    # Set variables for BR readers
+    locale_dolar_quote = format_decimal(dolar_quote, locale='pt_BR')
+    locale_total = format_decimal(total, locale='pt_BR')
+    locale_starting = format_decimal(STARTING_CAPITAL_IN_BRL, locale='pt_BR')
+    locale_difference = format_decimal(abs(difference_from_last_total), locale='pt_BR')
+    locale_revenue = format_decimal(total_revenue, locale='pt_BR')
     
     if difference_from_last_total > 0:
-        tweet = "Dólar hoje: R${}.\nTotal na conta do véio: R${:,.2f}!\nEm 02/01/2019, o valor era R${:,.2f}.\nRendeu hoje R${:,.2f}.\nRendimento total R${:,.2f}.".format(dolar_quote, total, STARTING_CAPITAL_IN_BRL, difference_from_last_total, total_revenue)
+        tweet = "Dólar hoje: R${}.\nTotal na conta do véio: R${}!\nEm 02/01/2019, o valor era R${}.\nRendeu hoje R${}.\nRendimento total R${}.".format(locale_dolar_quote, locale_total, locale_starting, locale_difference, locale_revenue)
         media = api.media_upload("rendeu.jpg")
     else:
-        tweet = "Dólar hoje: R${}.\nTotal na conta do véio: R${:,.2f}!\nEm 02/01/2019, o valor era R${:,.2f}.\nPerdeu hoje R${:,.2f}.\nRendimento total R${:,.2f}.".format(dolar_quote, total, STARTING_CAPITAL_IN_BRL, abs(difference_from_last_total), total_revenue)
+        tweet = "Dólar hoje: R${}.\nTotal na conta do véio: R${}!\nEm 02/01/2019, o valor era R${}.\nPerdeu hoje R${}.\nRendimento total R${}.".format(locale_dolar_quote, locale_total, locale_starting, locale_difference, locale_revenue)
         media = api.media_upload("perdeu.jpg")
     api.update_status(status=tweet, media_ids=[media.media_id])
 

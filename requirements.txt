@@ -3,3 +3,4 @@ wget
 gspread
 oauth2client
 datetime
+babel
