@@ -2,7 +2,7 @@ name: RUN-BOT
 
 on:
   schedule:
-    - cron: "30 21 * * 1-5"
+    - cron: "05 22 * * 1-5"
   workflow_dispatch:
 
 jobs:
