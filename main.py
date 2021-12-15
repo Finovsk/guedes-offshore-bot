@@ -62,7 +62,7 @@ def publish_tweet(consumer_key, consumer_secret, key, secret, credentials, scope
 
     # Save latest value
     today = str(date.today())
-    new_row = [today, total]
+    new_row = [today, total, dolar_quote]
     sheet.insert_row(new_row, 2)
 
     difference_from_last_total = total - previous_total_value
