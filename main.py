@@ -28,7 +28,7 @@ QUOTE_LINK = "https://economia.awesomeapi.com.br/json/last/USD-BRL"
 def get_quote():
     """This function gets actual dollar quote from QUOTE_LINK"""
     
-    dolar_quote = requests.get(QUOTE_LINK).content
+    dolar_quote = requests.get(QUOTE_LINK, headers={"Cache-Control": "no-cache"}).content
     dolar_quote = json.loads(dolar_quote)
     dolar_quote = float(dolar_quote["USDBRL"]["ask"])
     return dolar_quote
