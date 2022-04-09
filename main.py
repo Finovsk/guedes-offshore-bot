@@ -30,7 +30,7 @@ def get_quote():
     
     dolar_quote = requests.get(QUOTE_LINK, headers={"Cache-Control": "no-cache"}).content
     dolar_quote = json.loads(dolar_quote)
-    dolar_quote = float(dolar_quote["USDBRL"]["ask"])
+    dolar_quote = float(dolar_quote["USD"]["ask"])
     return dolar_quote
 
 def get_total():
