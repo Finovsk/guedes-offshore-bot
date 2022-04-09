@@ -29,6 +29,9 @@ jobs:
           KEY: ${{ secrets.KEY}}
           SECRET: ${{ secrets.SECRET }}
           CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+          
+      - name: Keepalive Workflow
+        uses: gautamkrishnar/keepalive-workflow@master
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
           CREDENTIALS: ${{ secrets.CREDENTIALS }}
         run: |
