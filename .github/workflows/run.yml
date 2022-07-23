@@ -33,6 +33,4 @@ jobs:
           CREDENTIALS: ${{ secrets.CREDENTIALS }}
         run: |
           python main.py
-                
-      - name: Keepalive Workflow
-        uses: gautamkrishnar/keepalive-workflow@master
+
